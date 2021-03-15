@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var svgWidth = 960;
 var svgHeight = 500;
 
@@ -251,3 +252,6 @@ d3.csv("./data/data.csv").then(function(data, err) {
 }).catch(function(error) {
   console.log(error);
 });
+=======
+// @TODO: YOUR CODE HERE!
+>>>>>>> ead8d290566bd4399cb95271d682ab55f54efd2c
