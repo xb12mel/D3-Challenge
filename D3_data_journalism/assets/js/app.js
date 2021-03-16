@@ -11,6 +11,8 @@ var margin = {
 var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
+//================================CONTAINER===============================
+
 // Create an SVG wrapper, append an SVG group that will hold our chart,
 // and shift the latter by left and top margins.
 var svg = d3
@@ -25,6 +27,9 @@ var chartGroup = svg.append("g")
 
 // Initial Params
 var chosenXAxis = "poverty";
+
+//================================= X AXIS =====================================
+
 
 // function used for updating x-scale var upon click on axis label
 function xScale(data, chosenXAxis) {
@@ -50,8 +55,11 @@ function renderAxes(newXScale, xAxis) {
   return xAxis;
 }
 
-// function used for updating circles group with a transition to
-// new circles
+//======================== CIRCLES ==============================================
+
+
+// function used for updating circles group with a transition to new circles
+
 function renderCircles(circlesGroup, newXScale, chosenXAxis) {
 
   circlesGroup.transition()
@@ -60,6 +68,9 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis) {
 
   return circlesGroup;
 }
+
+//======================== Circles ToolTip ==============================================
+
 
 // function used for updating circles group with new tooltip
 function updateToolTip(chosenXAxis, circlesGroup) {
@@ -79,7 +90,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 
   var toolTip = d3.tip()
     .attr("class", "tooltip")
-    .offset([0,0])
+    .offset([120,-60])
     .html(function(d) {
       return (`${d.state}<hr>${label} ${d[chosenXAxis]}`);
     });
@@ -96,6 +107,8 @@ function updateToolTip(chosenXAxis, circlesGroup) {
 
   return circlesGroup;
 }
+
+//======================== Bind the Data ==============================================
 
 // Retrieve data from the CSV file and execute everything below
 d3.csv("./data/data.csv").then(function(data, err) {
